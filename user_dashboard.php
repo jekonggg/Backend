@@ -52,7 +52,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="container">
         <h1>Welcome to Your Dashboard</h1>
         <a class="btn" href="user_viewaccount.php">View Account</a>
-        <a class="btn" href="user_viewproducts.php">View Products</a>
+        <a class="btn" href="userPage_homePage.php">View Products</a>
         <a class="btn" href="user_viewcart.php">View Cart</a>
         <a class="btn" href="user_vieworder.php">View Orders</a>
     </div>

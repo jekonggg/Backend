@@ -144,48 +144,53 @@ if (isset($_POST['checkout'])) {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
+    <title>Cart</title>
+    <link rel="stylesheet" href="userPage_cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
+            margin-top: 140px;
+
         }
-        .cart-container {
-            max-width: 800px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .cart-details, .payment-details {
+            margin-bottom: 20px;
+        }
         .cart-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
         }
         .cart-item img {
             max-width: 100px;
             margin-right: 20px;
         }
-        .cart-item-details {
+        .item-info {
             flex: 1;
         }
-        .cart-item-details h2 {
+        .item-info h2 {
             margin: 0;
             font-size: 18px;
         }
-        .cart-item-details p {
+        .item-info p {
             margin: 5px 0;
             color: #666;
         }
@@ -193,11 +198,9 @@ $conn->close();
             text-align: right;
         }
         .cart-summary {
-            margin-top: 20px;
             text-align: right;
         }
         .cart-buttons {
-            margin-top: 20px;
             text-align: right;
         }
         .cart-buttons button {
@@ -223,45 +226,56 @@ $conn->close();
             margin: 0;
             font-size: 18px;
         }
-    </style>
-    <script>
-        function validateCheckout() {
-            var checkboxes = document.getElementsByName('checkout_items[]');
-            var checked = false;
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                    checked = true;
-                    break;
-                }
-            }
-            if (!checked) {
-                alert('Please select items to checkout.');
-                return false;
-            }
-            return true;
+        .payment-details {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
         }
-    </script>
+        .payment-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .payment-details .total {
+            font-weight: bold;
+        }
+        .checkout-button {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        .checkout-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <div class="cart-container">
-        <h1>Shopping Cart</h1>
-        <?php if (!empty($cart_items)) { ?>
+  <?php include 'userPage_header_main.php'; ?>
+    
+    <div class="container">
+        <div class="cart-details">
+            <h2>Cart</h2>
+            <p>You have a total of <?php echo count($cart_items); ?> items in your cart</p>
+            
             <form method="post" action="user_viewcart.php" onsubmit="return validateCheckout()">
                 <?php foreach ($cart_items as $item) { ?>
                     <div class="cart-item">
-                        <div class="cart-item-details">
-                            <img src="<?php echo $item['ProductImages']; ?>" alt="<?php echo $item['ProductName']; ?>">
-                            <h2><?php echo $item['ProductName']; ?></h2>
+                        <input type="checkbox" name="checkout_items[]" value="<?php echo $item['ProductID']; ?>">
+                        <img src="<?php echo $item['ProductImages']; ?>" alt="<?php echo $item['ProductName']; ?>">
+                        <div class="item-info">
+                            <strong><?php echo $item['ProductName']; ?></strong>
+                            <p><?php echo $item['ProductDescription']; ?></p>
                             <p>Price: $<?php echo $item['Price']; ?></p>
                             <label for="quantity-<?php echo $item['ProductID']; ?>">Quantity:</label>
-                            <input type="number" id="quantity-<?php echo $item['ProductID']; ?>" name="quantities[<?php echo $item['ProductID']; ?>]" value="<?php echo $_SESSION['cart'][$item['ProductID']]; ?>" min="1">
-                        </div>
-                        <div class="cart-item-actions">
-                            <label for="checkout-<?php echo $item['ProductID']; ?>">Include in Checkout:</label>
-                            <input type="checkbox" id="checkout-<?php echo $item['ProductID']; ?>" name="checkout_items[]" value="<?php echo $item['ProductID']; ?>" <?php if (isset($_POST['checkout_items']) && in_array($item['ProductID'], $_POST['checkout_items'])) echo "checked"; ?>>
+                            <input type="number" id="quantity-<?php echo $item['ProductID']; ?>" name="quantities[<?php echo $item['ProductID']; ?>]" value="<?php echo $item['quantity']; ?>" min="1">
                         </div>
                     </div>
                 <?php } ?>
+
                 <div class="cart-summary">
                     <h3>Total Price: $<?php echo $total_price; ?></h3>
                     <div class="cart-buttons">
@@ -270,15 +284,37 @@ $conn->close();
                     </div>
                 </div>
             </form>
-        <?php } else { ?>
-            <div class="empty-cart">
-                <p>Your cart is empty.</p>
-            </div>
-        <?php } ?>
-        <div class="nav-buttons">
-            <button onclick="window.location.href='user_dashboard.php'">Back to Dashboard</button>
-            <button onclick="window.location.href='user_viewproducts.php'">View Products</button>
+        </div>
+
+        <div class="payment-details">
+            <h2>Payment Details</h2>
+            <p class="total">Total: $<?php echo $total_price; ?></p>
+            <p>Shipping fee: $40.00</p>
+            <p>Total discount: $0.00</p>
+            <hr>
+            <p class="total">$<?php echo $total_price + 40; ?></p>
+            <a href="checkout.php"><button class="checkout-button">Proceed to Checkout</button></a>
         </div>
     </div>
+
+    <?php include 'userPage_footer.php'; ?>
 </body>
 </html>
+
+<script>
+    function validateCheckout() {
+        var checkboxes = document.getElementsByName('checkout_items[]');
+        var checked = false;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                checked = true;
+                break;
+            }
+        }
+        if (!checked) {
+            alert('Please select items to checkout.');
+            return false;
+        }
+        return true;
+    }
+</script>
