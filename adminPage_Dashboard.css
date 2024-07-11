@@ -1,0 +1,267 @@
+body {
+    margin: 0;
+    line-height: normal;
+    font-family: Inter, sans-serif;
+    position: relative;
+}
+
+.rectangle {
+    width: 1485px;
+    position: relative;
+    border-radius: 29px;
+    border: 2px solid #dfdfdf;
+    box-sizing: border-box;
+    height: 585.24px;
+    margin-left: 336px;
+    margin-top: 1px;
+}
+
+.subheading {
+    width: 217px;
+    font-size: 15px;
+    font-family: Inter;
+    color: #929292;
+    text-align: left;
+    margin-left: 50px;
+}
+
+.heading {
+    width: 401px;
+    position: relative;
+    font-size: 30px;
+    display: inline-block;
+    font-family: Inter;
+    color: #000;
+    text-align: left;  
+    margin-top: 40px; 
+    margin-left: 50px;
+}
+
+.vertical-rectangle {
+    border-radius: 29px;
+    border: 2px solid #dfdfdf;
+    box-sizing: border-box;
+    width: 734.613px;
+    height: 646.007px;
+    flex-shrink: 0;
+    margin-left: 336px;
+}
+
+.vertical-line {
+    border-left: 2px solid #dfdfdf;
+    position: absolute;
+    height: 100%;
+    left: 300px;
+    top: 120px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.profile-container {
+    position: relative;
+    width: 250px;
+    margin-top: 45px;
+    margin-left: 1540px;
+}
+
+.profile {
+    border-radius: 40px;
+    background-color: #fff;
+    border: 2px solid #dfdfdf;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    transition: height 0.3s, border-radius 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    height: 80px; /* Initial height */
+    overflow: hidden; /* Hide overflow */
+    position: absolute;
+    z-index: 999999999;
+    width: 275.942px;
+    height: 80px;
+}
+
+.profile:hover {
+    height: 190px; 
+}
+
+.profilePicture {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid #dfdfdf;
+    background: lightgray;
+    z-index: 1;
+    margin-top: -4px;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.name, .position {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 2px 10px;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.name {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    position: absolute;
+    top: 1px; /* Adjust top positioning as needed */
+    left: 70px; /* Adjust left positioning as needed */
+}
+
+.position {
+    margin-top: 7px;
+    font-size: 12px;
+    position: absolute;
+    top: 35px; /* Adjust top positioning as needed */
+    left: 75px; /* Adjust left positioning as needed */
+}
+
+.options {
+    position: absolute;
+    bottom: 1px; 
+    left: 0;
+    right: 0;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.profile:hover .options {
+    opacity: 1;
+    visibility: visible; 
+}
+
+.options a {
+    color: #000;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    transition: 0.2s;
+}
+
+.options a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.options a img {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    z-index: 1;
+}
+
+.logo-horizontal {
+    height: 90px;
+    width: auto;
+    margin-left: 75px;
+    margin-top: 0px;
+}
+
+.header-line {
+    border: none;
+    border-top: 2.5px solid #dfdfdf;
+    margin: 0;
+    margin-top: 25px; /* Adjusted margin */
+    width: 100%;
+}
+
+.menu {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 90px;
+}
+
+.rise-button {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    font-weight: normal;
+    margin-top: 15px;
+}
+
+.rise-button.selected {
+    color: red;
+    font-weight: bold;
+}
+
+.rise-button:hover {
+    transform: translateY(-10px);
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: 700;
+    margin-left: 350px;
+    margin-top: -170px;
+    margin-bottom: 100px;
+}
+
+.animation-button {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.bounce-button:hover {
+    transform: translateY(-10px);
+    animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+a:visited {
+    color: black; /* Same as normal link color */
+}

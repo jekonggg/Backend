@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column; /* Changed from row to column */
+        align-items: center;
+    }
+
+    .rectangle {
+        width: 100%;
+        margin-left: 336px;
+        position: relative;
+        border-radius: 29px;
+        border: 2px solid #dfdfdf;
+        box-sizing: border-box;
+        height: 585.24px;
+        margin-bottom: 20px; /* Added margin bottom for spacing */
+        padding: 20px;
+    }
+
+    .rectangle h2 {
+        margin-top: 0;
+        width: 401px;
+        position: relative;
+        font-size: 30px;
+        display: inline-block;
+        font-family: Inter;
+        color: #000;
+        text-align: left;  
+        margin-left: 50px;
+        margin-top:20px;
+    }
+
+
+
+    .order-item {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #dfdfdf;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 2px 1px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .button.decline {
+        background-color: #f44336;
+    }
+
+    .vertical-line {
+        border-left: 2px solid #dfdfdf;
+        position: absolute;
+        height: 100%;
+        left: 300px;
+        top: 120px;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    .menu {
+        color: #000;
+        font-size: 24px;
+        font-weight: 400;
+        margin-left: 90px;
+    }
+
+    .rise-button {
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        font-weight: normal;
+        margin-top: 15px;
+    }
+
+    .rise-button.selected {
+        color: red;
+        font-weight: bold;
+    }
+
+    .rise-button:hover {
+        transform: translateY(-10px);
+    }
+
+    .no-orders-message {
+        text-align: center; /* Center the text horizontally */
+        font-size: 18px; /* Adjust font size if needed */
+        color: #666; /* Adjust text color if needed */
+        margin: 20px; /* Add some margin for spacing */
+        padding: 20px; /* Add some padding if needed */
+    }

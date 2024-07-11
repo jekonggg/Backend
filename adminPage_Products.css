@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button-rectangle {
+    width: 260px;
+    height: 100px;
+    border-radius: 20px;
+    border: 2px solid #dfdfdf;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.vertical-line {
+    border-left: 2px solid #dfdfdf;
+    position: absolute;
+    height: 100%;
+    left: 300px;
+    top: 120px;
+    bottom: 0;
+    z-index: -1;
+}
+.menu {
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+    margin-left: 90px;
+}
+.rectangle {
+    width: 1485px;
+    position: relative;
+    border-radius: 29px;
+    border: 2px solid #dfdfdf;
+    box-sizing: border-box;
+    height: auto;
+    margin-left: 336px;
+    margin-top: 1px;
+    padding: 20px;
+}
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    width: 100%;
+}
+.product {
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    padding: 15px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+.product img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+.product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+.product-price {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.action-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+}
+.hyperlink-button {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    align: center;
+    margin-bottom: 15px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #dfdfdf;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.modal-buttons .btn-cancel {
+    background-color: #dfdfdf;
+    color: #333;
+}
+.modal-buttons .btn-add,
+.modal-buttons .btn-update {
+    background-color: #007bff;
+    color: #fff;
+}
